@@ -45,6 +45,16 @@ public class DiscPercFinderTests
         var (a, b, c, expected) = testCases[2];
         var result = DiscPercFinder.FindRoots(a, b, c);
         var actual = new List<double?> { result.Item1, result.Item2 };
+        var expectedList = new List<double?> { expected.Item1, expected.Item2 };
+        CollectionAssert.AreEqual(expectedList, actual);
+    }
+    
+    [TestMethod]
+    public void TestFindRoots_D_AllUnique()
+    {
+        var (a, b, c, expected) = testCases[2];
+        var result = DiscPercFinder.FindRoots(a, b, c);
+        var actual = new List<double?> { result.Item1, result.Item2 };
         CollectionAssert.AllItemsAreUnique(actual);
     }
     
@@ -59,6 +69,7 @@ public class DiscPercFinderTests
         var expectedList = new List<double> { expected };
         CollectionAssert.IsSubsetOf(expectedList, actual);
     }
+    
     [TestMethod]
     public void TestCalculatePercentage_Number_ReturnsPercentageWithDelta()
     {
